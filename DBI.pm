@@ -8,14 +8,14 @@ Iterator::DBI - An iterator for returning DBI query results.
 
 =head1 VERSION
 
-This documentation describes version 0.01 of Iterator::DBI, August 18, 2005.
+This documentation describes version 0.02 of Iterator::DBI, August 23, 2005.
 
 =cut
 
 use strict;
 use warnings;
 package Iterator::DBI;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use base 'Exporter';
 use vars qw/@EXPORT @EXPORT_OK %EXPORT_TAGS/;
@@ -104,7 +104,7 @@ calling L<fetchrow_hashref|DBI/fetchrow_hashref>; since this one
 function bundles up the calls to all three of those DBI methods.
 
 But the real usefulness of this interface is that it can be chained
-together with other Iterator functions.  The L<i/db_rows> iterator has
+together with other Iterator functions.  The L</idb_rows> iterator has
 the same interface as any other interface, making it interchangeable
 with iterators of any other source (for example, files), and usable
 with the iterator manipulation functions in the L<Iterator::Util>
@@ -120,8 +120,8 @@ module.
  $it = idb_rows ($dbh, $sql, @bind);
 
 Returns an iterator to return rows from a database query.  Each row is
-returned as a hashref, as from C<fetchrow_hashref> from the DBI
-module.
+returned as a hashref, as from C<fetchrow_hashref|DBI/fetchrow_hashref>
+from the DBI module.
 
 If the query requires bind variables, they may be passed in C<@bind>.
 
@@ -146,8 +146,8 @@ If you're not familiar with Exception::Class, don't worry; these
 exception objects work just like C<$@> does with C<die> and C<croak>,
 but they are easier to work with if you are trapping errors.
 
-You can learn more about Iterator exceptions in the L<Iterator>
-module documentation.
+You can learn more about Iterator exceptions in the
+L<Iterator|Iterator/DIAGNOSTICS> module documentation.
 
 =over 4
 
@@ -186,14 +186,15 @@ The DBI C<fetchrow_hashref> method returned an error.
 
 Requires the following additional modules:
 
- L<Iterator>
- L<DBI>
+L<Iterator>
+
+L<DBI>
 
 =head1 SEE ALSO
 
 I<Higher Order Perl>, Mark Jason Dominus, Morgan Kauffman 2005.
 
- L<http://perl.plover.com/hop/>
+L<http://perl.plover.com/hop/>
 
 The L<Iterator> module.
 
@@ -211,10 +212,6 @@ To avoid my spam filter, please include "Perl", "module", or this
 module's name in the message's subject line, and/or GPG-sign your
 message.
 
-If you have suggestions for improvement, please drop me a line.  If
-you make improvements to this software, I ask that you please send me
-a copy of your changes. Thanks.
-
 =cut
 
 =begin gpg
@@ -222,9 +219,9 @@ a copy of your changes. Thanks.
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.1 (Cygwin)
 
-iD8DBQFDBLvxY96i4h5M0egRAkxBAJ9NfcXkYYjEpxgVWWFF+vziOGYlRwCggvoJ
-rQUuicsnNOrrQr/ou6Uj/Yg=
-=dynj
+iD8DBQFDC5R8Y96i4h5M0egRAtxIAJ9/FJ1TndC3JKlesiWUAred9JWW/wCcDVRA
+dfUba0u3uWhaRP9zx3TaJEQ=
+=jGbz
 -----END PGP SIGNATURE-----
 
 =end gpg
